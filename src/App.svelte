@@ -21,9 +21,7 @@ function swoop() {
 let showing = true
 </script>
 
-onMount{
-    window.Buffer = Buffer
-  }
+
 
 <div>
 <Header/>
