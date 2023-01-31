@@ -14,8 +14,6 @@ export default defineConfig({
       process: "process/browser"
     }
   },
-  optimizeDeps: {
-    exclude: ['buffer'] // <= The libraries that need shimming should be excluded from dependency optimization.
-  }
+
   
 })
