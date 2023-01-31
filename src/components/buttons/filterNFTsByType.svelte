@@ -5,7 +5,7 @@
     import fetchEthereumNfts from "../../utils/fetchEthereumNfts";
     import fetchImxNfts from "../../utils/fectchImxNfts";
     import fetchSolanaNfts from "../../utils/fetchSolanaNfts";
-    // import fetchLoopringNfts from "../../utils/fetchLoopringNfts";
+
     import Nft from "../NFT.svelte";
     import fetchLoopringNfts from "../../utils/fetchLoopringNfts";
 </script>
