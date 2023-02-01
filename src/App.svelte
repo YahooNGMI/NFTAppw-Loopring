@@ -22,8 +22,13 @@ function swoop() {
 let showing = true
 
 	onMount(async () => {
+  
     console.log("Buffer:",Buffer)
 	});
+
+  if(Buffer === undefined) {
+  alert("myProperty value is the special value `undefined`");
+}
 </script>
 
 
