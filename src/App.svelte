@@ -1,59 +1,60 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
-import Header from "./components/Header.svelte";
-import NfTview from "./components/NFTview.svelte";
+  import Header from "./components/Header.svelte";
+  import NfTview from "./components/NFTview.svelte";
   import WalletModal from "./components/WalletModal.svelte";
-import {ethereumAccount, solanaAccount} from "./store/account";
+  import { ethereumAccount, solanaAccount } from "./store/account";
 
   import NftModal from "./components/NFTModal.svelte";
-    import { onMount } from "svelte";
-  import { Buffer } from "buffer";
-    
-let visible=true;
+  import { onMount } from "svelte";
+ 
 
+  let visible = true;
 
-function swoop() {
-  return {
-    duration: 1000,
-
-    css: (t,u) => `transform:  translateX(${u * 100}%);`
+  function Buffer(arg, encodingOrOffset, length) {
+    // Common case.
+    if (typeof arg === "number") {
+      if (typeof encodingOrOffset === "string") {
+        throw new TypeError(
+          'The "string" argument must be of type string. Received type number'
+        );
+      }
+      return allocUnsafe(arg);
+    }
+    return from(arg, encodingOrOffset, length);
   }
-}
-let showing = true
+  function swoop() {
+    return {
+      duration: 1000,
 
-	onMount(async () => {
-  
-    console.log("Buffer:",Buffer)
-	});
+      css: (t, u) => `transform:  translateX(${u * 100}%);`,
+    };
+  }
+  let showing = true;
 
-  if(Buffer === undefined) {
-  alert("myProperty value is the special value `undefined`");
-}
+  onMount(async () => {
+    console.log("Buffer:", Buffer);
+  });
+
+  if (Buffer === undefined) {
+    alert("myProperty value is the special value `undefined`");
+  }
 </script>
 
-
-
 <div>
-<Header/>
+  <Header />
 </div>
-<div>
-
-</div>
-<WalletModal/>
-
+<div />
+<WalletModal />
 
 {#if visible}
-<p transition:fly="{{ y: 200, duration: 2000 }}">
-  Flies in and out
-</p>
-
+  <p transition:fly={{ y: 200, duration: 2000 }}>Flies in and out</p>
 {/if}
-
 
 {#if $ethereumAccount || $solanaAccount}
-<NfTview />
+  <NfTview />
 {:else}
-Connect a Wallet
+  Connect a Wallet
 {/if}
 
-<NftModal/>
+<NftModal />
