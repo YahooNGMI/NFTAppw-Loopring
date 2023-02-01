@@ -6,7 +6,8 @@ import NfTview from "./components/NFTview.svelte";
 import {ethereumAccount, solanaAccount} from "./store/account";
 
   import NftModal from "./components/NFTModal.svelte";
-  
+    import { onMount } from "svelte";
+  import { Buffer } from "buffer";
     
 let visible=true;
 
@@ -19,6 +20,10 @@ function swoop() {
   }
 }
 let showing = true
+
+	onMount(async () => {
+    console.log("Buffer:",Buffer)
+	});
 </script>
 
 
