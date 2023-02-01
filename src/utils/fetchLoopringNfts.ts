@@ -15,6 +15,7 @@ import { NFTType, type NFT } from "../domain/nft";
 
 
 async function fetchLoopringNfts(address: string): Promise<NFT[]> {
+  console.log("Buffer:",Buffer)
 console.log("BUFFFFER")
   let domainNfts: NFT[] = [];
   console.log("dfsddffd")
@@ -33,7 +34,7 @@ console.log("BUFFFFER")
   // console.log("web3",web3);
   // console.log("Window:",(window as any).ethereum.selectedAddress)
   // (window as any).ethereum
-  try {
+
     const eddsaKey = await generateKeyPair({
       isMobile: false,
       address: address,
@@ -62,20 +63,24 @@ console.log("BUFFFFER")
 
     // console.log("balnaces:", balances)
     // console.log("Id:", parseImageURL(balances.userNFTBalances[0].metadata.extra.animationUrl))
-    
+    let loopringCollectionName: string
     console.log(balances.userNFTBalances)
     balances.userNFTBalances.forEach(function (nft,index) {
-      
+      if (nft.collectionInfo) {
+        loopringCollectionName = nft.collectionInfo.name
+      } else {
+loopringCollectionName = ""
+      }
       
       const domainNft: NFT = {
         name: nft.metadata.base.name,
         imageURL: parseImageURL(nft.metadata.base.image),
-        collection: "",
+        collection: loopringCollectionName,
         description: nft.metadata.base.description,
         nftType: NFTType.Loopring,
         index: index,
-        creator: nft.metadata.extra.minter,
-        externalUrl: nft.metadata.extra.externalUrl,
+        creator: "",
+        externalUrl: "",
         attributes: [{
           type:"",
           value:""
@@ -85,10 +90,7 @@ console.log("BUFFFFER")
     });
 
  
-  } catch (error) {
-    alert("Error fetching your Loopring NFTs. Please set the desired wallet as the default in your wallet settings")
-  }
-
+ 
 
   return domainNfts;
 

@@ -27,7 +27,7 @@
 <Modal bind:this={modal} on:click={createModal}>
     <div id="modalNFT">
         <div id="modalTop">
-            <img id="modalImage" src={$nftModalImage} alt="nft image here" />
+            <iframe id="modalImage" src={"https://loopring.mypinata.cloud/ipfs/QmcmmnWJTAPkwMZFHnNU9U8KeBoDYFAGsXjeD6C2m5dF7K/"} alt="nft image here" />
         </div>
         <div id="nftDetails">
             <div id="modalTitle">
