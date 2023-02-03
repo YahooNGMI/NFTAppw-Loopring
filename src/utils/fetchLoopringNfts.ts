@@ -4,7 +4,7 @@ import {
   UserAPI,
   generateKeyPair,
   ConnectorNames,
- 
+
 
 } from "@loopring-web/loopring-sdk";
 import axios from "axios";
@@ -15,8 +15,8 @@ import { NFTType, type NFT } from "../domain/nft";
 
 
 async function fetchLoopringNfts(address: string): Promise<NFT[]> {
-  console.log("Buffer:",Buffer)
-console.log("BUFFFFER")
+  console.log("Buffer:", Buffer)
+  console.log("BUFFFFER")
   let domainNfts: NFT[] = [];
   console.log("dfsddffd")
   // (window as any).ethereum.selectedAddress = address;
@@ -35,62 +35,69 @@ console.log("BUFFFFER")
   // console.log("Window:",(window as any).ethereum.selectedAddress)
   // (window as any).ethereum
 
-    const eddsaKey = await generateKeyPair({
-      isMobile: false,
-      address: address,
-      walletType: ConnectorNames.Gamestop,
-      chainId: 1,
-      keySeed:
-        "Sign this message to access Loopring Exchange: 0x0BABA1Ad5bE3a5C0a66E7ac838a129Bf948f1eA4 with key nonce: 0",
-      web3: web3,
-    });
-  // console.log("eddsakey",eddsaKey)
+  const eddsaKey = await generateKeyPair({
+    isMobile: false,
+    address: address,
+    walletType: ConnectorNames.Gamestop,
+    chainId: 1,
+    keySeed:
+      "Sign this message to access Loopring Exchange: 0x0BABA1Ad5bE3a5C0a66E7ac838a129Bf948f1eA4 with key nonce: 0",
+    web3: web3,
+  });
 
-    const apiKey = await userAPI.getUserApiKey(
-      {
-        accountId: accountInfo.data.accountId,
-      },
-      eddsaKey.sk);
 
-      // console.log("apikey:",apiKey)
-    const balances = await userAPI.getUserNFTBalances(
-      {
-        accountId: accountInfo.data.accountId,
-        metadata: true,
-      },
-      apiKey.apiKey
-    );
+  const apiKey = await userAPI.getUserApiKey(
+    {
+      accountId: accountInfo.data.accountId,
+    },
+    eddsaKey.sk);
 
-    // console.log("balnaces:", balances)
-    // console.log("Id:", parseImageURL(balances.userNFTBalances[0].metadata.extra.animationUrl))
-    let loopringCollectionName: string
-    console.log(balances.userNFTBalances)
-    balances.userNFTBalances.forEach(function (nft,index) {
-      if (nft.collectionInfo) {
-        loopringCollectionName = nft.collectionInfo.name
-      } else {
-loopringCollectionName = ""
-      }
-      
-      const domainNft: NFT = {
-        name: nft.metadata.base.name,
-        imageURL: parseImageURL(nft.metadata.base.image),
-        collection: loopringCollectionName,
-        description: nft.metadata.base.description,
-        nftType: NFTType.Loopring,
-        index: index,
-        creator: "",
-        externalUrl: "",
-        attributes: [{
-          type:"",
-          value:""
+
+  const balances = await userAPI.getUserNFTBalances(
+    {
+      accountId: accountInfo.data.accountId,
+      metadata: true,
+    },
+    apiKey.apiKey
+  );
+
+
+  let loopringCollectionName: string
+  console.log(balances.userNFTBalances)
+
+
+
+
+  balances.userNFTBalances.forEach(async function (nft, index) {
+    if (nft.collectionInfo) {
+      loopringCollectionName = nft.collectionInfo.name
+    } else {
+      loopringCollectionName = ""
+    }
+
+
+
+    const domainNft: NFT = {
+      name: nft.metadata.base.name,
+      imageURL: parseImageURL(nft.metadata.base.image),
+      animationImage: nft.metadata.uri,
+      collection: loopringCollectionName,
+      description: nft.metadata.base.description,
+      nftType: NFTType.Loopring,
+      index: index,
+      creator: "",
+      externalUrl: "",
+      attributes: [{
+        type: "",
+        value: ""
       }],
-      };
-      domainNfts.push(domainNft);
-    });
+    };
+    domainNfts.push(domainNft);
+  })
 
- 
- 
+
+
+
 
   return domainNfts;
 

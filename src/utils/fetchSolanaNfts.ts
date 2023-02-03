@@ -17,6 +17,7 @@ async function fetchSolanaNfts(solanaAddressInput: string): Promise<NFT[]> {
   await Promise.all(
     tokenMetadata.map(async function (solNft, index) {
       const n = await fetch(solNft.data.uri);
+      console.log("sol",solNft)
       const metadata = await n.json();
       
 

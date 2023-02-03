@@ -6,8 +6,7 @@
   import { ethereumAccount, solanaAccount } from "./store/account";
 
   import NftModal from "./components/NFTModal.svelte";
-  import { onMount } from "svelte";
- import Buffer from './utils/buffer'
+
 
   let visible = true;
 

@@ -1,12 +1,14 @@
 <script lang="ts">
     import nfts from "../store/nfts";
     import parseImageURL from "../utils/parseImageURL";
+    import axios from "axios";
 
     import {
         shown,
         modalTitle,
         nftModalDescription,
         nftModalImage,
+        nftModalAnimationImage,
         nftModalName,
         nftModalNftType,
         nftModalCreator,
@@ -19,6 +21,7 @@
     let modal;
     let element;
     function onClickEquivalent(event) {
+        nftModalAnimationImage.set("");
         console.log("dffdfdf");
         // console.log(event);
         var nftIndex = event.currentTarget.getAttribute("data-index");
@@ -33,6 +36,24 @@
         nftModalCreator.set($nfts[nftIndex].creator);
         nftModalExternalUrl.set($nfts[nftIndex].externalUrl);
         nftModalAttributes.set($nfts[nftIndex].attributes);
+        axios
+            .get(parseImageURL($nfts[nftIndex].animationImage))
+            .then((response) => {
+                console.log(
+                    "response",
+                    "https://loopring.mypinata.cloud/ipfs" +
+                        response.data.animation_url.slice(6)
+                );
+                nftModalAnimationImage.set(
+                    "https://loopring.mypinata.cloud/ipfs" +
+                        response.data.animation_url.slice(6)
+                );
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        // nftModalAnimationImage.set($nfts[nftIndex].animationImage)
         // console.log(event.currentTarget.getAttribute("data-index"));
         // const target = event.target;
         // const parent = target.parentElement;

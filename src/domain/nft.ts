@@ -10,6 +10,7 @@ enum NFTType {
 
 type NFT = {
     imageURL: string;
+    animationImage: string;
     name: string;
     description: string;
     collection:string;

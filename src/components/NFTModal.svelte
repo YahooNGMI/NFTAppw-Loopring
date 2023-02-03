@@ -5,6 +5,7 @@
         modalTitle,
         nftModalDescription,
         nftModalImage,
+        nftModalAnimationImage,
         nftModalName,
         nftModalNftType,
         nftModalCreator,
@@ -20,14 +21,20 @@
         var nftIndex = event.currentTarget.getAttribute("data-index");
         console.log(nftIndex);
         console.log($nfts[nftIndex]);
+        
     }
+
 </script>
 
 <!-- <button on:click={() => modal.show()}>Show Button</button> -->
 <Modal bind:this={modal} on:click={createModal}>
     <div id="modalNFT">
         <div id="modalTop">
-            <iframe id="modalImage" src={"https://loopring.mypinata.cloud/ipfs/QmcmmnWJTAPkwMZFHnNU9U8KeBoDYFAGsXjeD6C2m5dF7K/"} alt="nft image here" />
+             {#if $nftModalAnimationImage}
+             <iframe id="modalAnimationImage" src={$nftModalAnimationImage} alt="nft image here" />
+             {:else}
+            <img id="modalImage" src={$nftModalImage} alt="nft image here" />
+            {/if}
         </div>
         <div id="nftDetails">
             <div id="modalTitle">
@@ -127,8 +134,8 @@
         width: 100%;
     }
     #modalNFT {
-        width: 600px;
-        min-width: 600px;
+        width: 90%;
+        /* min-width: 600px; */
         height: 90%;
         background-color: rgb(59, 54, 54);
         overflow-x: hidden;
@@ -168,5 +175,9 @@
     }
     #modalImage {
         /* height: 100%; */
+    }
+
+    #modalAnimationImage {
+        width:100%;
     }
 </style>
