@@ -9,14 +9,15 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/bundle.js"></script>
   </body>
 </html>
 <!-- node // buffer-->
-<script>window.global = window;</script>
+
 <script type="module">
     import { Buffer } from "buffer/"; // <-- no typo here ("/")
     import process from "process";
-   
+    window.global = window;
     window.Buffer = Buffer;
     window.process = process;
 </script>

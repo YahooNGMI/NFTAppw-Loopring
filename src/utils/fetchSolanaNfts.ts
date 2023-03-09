@@ -11,6 +11,7 @@ async function fetchSolanaNfts(solanaAddressInput: string): Promise<NFT[]> {
     connection,
     ownerPublickey
   );
+  console.log(tokenMetadata)
   let title;
   let external_url:string;
   let i=0;

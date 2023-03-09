@@ -6,9 +6,15 @@
   import { ethereumAccount, solanaAccount } from "./store/account";
 
   import NftModal from "./components/NFTModal.svelte";
+// import Home from "./pages/Home.svelte";
+// import Login from "./pages/Login.svelte";
+  
+// const routes = {
+//   "/": Home,
+//   "/login": Login
+// }
 
-
-  let visible = true;
+let visible = true;
 
 
   function swoop() {

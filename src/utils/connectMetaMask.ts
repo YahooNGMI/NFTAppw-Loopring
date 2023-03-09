@@ -9,11 +9,8 @@ type EthereumWindow = {
 
 async function connectMetaMask() {
   // connectMetaMaskButton.disabled = true;
-
-  
     const provider = new ethers.providers.Web3Provider(
       (window as any as EthereumWindow).ethereum
-
     );
     const walletAddress = await window.ethereum.request({
       method: "eth_requestAccounts",

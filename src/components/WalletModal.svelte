@@ -15,11 +15,11 @@
             {#if $ethereumAccount}
                 {"Connected Ethereum Account: " +
                     displayEthereumAddress($ethereumAccount)}
-                <!-- <DisconnectEthereum/> -->
+              
             {:else}
                 <ConnectEthereumWallet />
             {/if}
-       
+
             {#if $solanaAccount}
                 {"Connected Solana Account: " +
                     displaySolanaAddress($solanaAccount)}
@@ -33,19 +33,18 @@
 
 <style>
     #myModal {
-        position: fixed;
+        position: absolute;
         background-color: rgba(63, 63, 63, 0.95);
         top: 97px;
         border: 1px solid white;
         /* border: 2px solid rgb(1, 1, 1); */
         margin-bottom: 5px;
-        z-index: 100;
+        /* z-index: 100; */
         /* width: 100%; */
         margin-left: 70%;
     }
 
     .modal {
-    
         width: 30%;
         height: 100%;
         transition: transform 1s ease-out, opacity 1s ease-out;
@@ -71,7 +70,6 @@
 
     #walletButtons {
         display: flex;
-      text-align: center;
-        
+        text-align: center;
     }
 </style>

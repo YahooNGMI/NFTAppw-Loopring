@@ -36,22 +36,23 @@
         nftModalCreator.set($nfts[nftIndex].creator);
         nftModalExternalUrl.set($nfts[nftIndex].externalUrl);
         nftModalAttributes.set($nfts[nftIndex].attributes);
-        axios
-            .get(parseImageURL($nfts[nftIndex].animationImage))
-            .then((response) => {
-                console.log(
-                    "response",
-                    "https://loopring.mypinata.cloud/ipfs" +
-                        response.data.animation_url.slice(6)
-                );
-                nftModalAnimationImage.set(
-                    "https://loopring.mypinata.cloud/ipfs" +
-                        response.data.animation_url.slice(6)
-                );
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        // axios
+        //     .get(parseImageURL($nfts[nftIndex].animationImage))
+            
+        //     .then((response) => {
+        //         // console.log(
+        //         //     "response",
+                 
+        //         //         response.data.animation_url
+        //         // );
+        //         nftModalAnimationImage.set(
+                   
+        //                 response.data.animation_url
+        //         );
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        //     });
 
         // nftModalAnimationImage.set($nfts[nftIndex].animationImage)
         // console.log(event.currentTarget.getAttribute("data-index"));

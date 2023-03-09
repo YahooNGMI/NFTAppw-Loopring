@@ -7,7 +7,7 @@
     import fetchSolanaNfts from "../../utils/fetchSolanaNfts";
 
     import Nft from "../NFT.svelte";
-    import fetchLoopringNfts from "../../utils/fetchLoopringNfts";
+    // import fetchLoopringNfts from "../../utils/fetchLoopringNfts";
 </script>
 
 <div class="checkbox">

@@ -12,8 +12,9 @@
         nftModalExternalUrl,
         nftModalAttributes,
     } from "../store/nftModal";
-    import parseImageURL from "../utils/parseImageURL";
+    
     import NfTattributes from "./NFTattributes.svelte";
+   
     let modal;
     function createModal(event) {
         console.log("dffdfdf");
@@ -31,6 +32,7 @@
     <div id="modalNFT">
         <div id="modalTop">
              {#if $nftModalAnimationImage}
+  
              <iframe id="modalAnimationImage" src={$nftModalAnimationImage} alt="nft image here" />
              {:else}
             <img id="modalImage" src={$nftModalImage} alt="nft image here" />
@@ -139,7 +141,7 @@
         height: 90%;
         background-color: rgb(59, 54, 54);
         overflow-x: hidden;
-        overflow-y: auto;
+ 
         scrollbar-width: thin;
         border-radius: 10px;
     }
@@ -166,6 +168,8 @@
         background-color: black;
         display: flex;
         justify-content: center;
+      overflow-y:visible;
+     
         
     }
     #modalBottom {

@@ -4,7 +4,8 @@ enum NFTType {
     Ethereum,
     IMX, 
     Solana,
-    Loopring
+    Loopring,
+    Cantos
 }
 
 

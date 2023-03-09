@@ -10,6 +10,9 @@
   import ConnectWallet from "./buttons/ConnectWallet.svelte";
   import Nft from "./NFT.svelte";
   import nfts from "../store/nfts";
+    import ConnectMetamaskforCanto from "./buttons/GetSignerforCantos.svelte";
+    import GetSignerforCantos from "./buttons/GetSignerforCantos.svelte";
+    import ConnectMetamaskforCantos from "./buttons/ConnectMetamaskforCantos.svelte";
 </script>
 
 <div id="header">
@@ -19,12 +22,14 @@
       <input
         id="addressLookUp"
         class="walletInput"
-        placeholder="Enter Wallet Address here"
+        placeholder="Filter NFTs by name"
       />
       <button id="addressLookUpButton">🔍</button>
       <div />
     </div>
-
+    <button id="fetchLoopring">FetchLooprig</button>
+<GetSignerforCantos/>
+<ConnectMetamaskforCantos/>
     <div class="headerButtons">
       <ConnectWallet />
     </div>
